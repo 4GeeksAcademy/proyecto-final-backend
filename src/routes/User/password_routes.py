@@ -6,13 +6,10 @@ from datetime import timedelta
 from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 
-
-
 password_bp = Blueprint('password_bp', __name__)
 
 bcrypt = Bcrypt()
 mail = Mail()
-
 
 
 # Ruta para solicitar el restablecimiento de contraseña

@@ -22,7 +22,20 @@ def create_user():
     new_user.password = bcrypt.generate_password_hash(new_user.password).decode('utf-8')
     db.session.add(new_user)
     db.session.commit()
-    return jsonify({"message": "Usuario creado"}), 201
+    access_token = create_access_token(identity=str(new_user.id))
+
+    # Aquí devuelvo el token y la info del usuario
+    return jsonify({
+        "message": "Usuario creado",
+        "access_token": access_token,
+        "user": {
+            "id": new_user.id,
+            "nombre": new_user.nombre,
+            "apellidos": new_user.apellidos,
+            "nombre_usuario": new_user.nombre_usuario,
+            "email": new_user.email
+        }
+    }), 201
 
 @user_bp.route('/login', methods=['POST'])
 def login():

@@ -10,7 +10,12 @@ from models import Ingrediente, Receta, RecetaFavorita, receta_ingredientes
 from routes import user_bp, recipe_bp, ingredient_bp, favorite_bp, ai_bp, password_bp
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
+
+from openai import OpenAI
+import openai
+
 from flask_mail import Mail
+
 
 
 #  Configuración de la Aplicación Flask
